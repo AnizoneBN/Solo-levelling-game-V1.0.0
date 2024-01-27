@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Solo Leveling</title>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const cooldownKey = 'level_calculate_cooldown';
+        const titleNames = [
+            "The Insurgent Serpent",
+            "Soul King",
+            "The Clown",
+            "Silver Wolf",
+            "Weretiger",
+            "Grand King",
+            "King of the Court",
+            "Ultimate Decoy",
+            "Courtesan of Death",
+            "Demon Vice Commander",
+            "Prince of Sadists",
+            "The Hacker"
+        ];
+
+        const jobNames = [
+            "Monarch of Flames",
+            "The Beast Monarch",
+            "Monarch of Beginning",
+            "Monarch of Plagues",
+            "Monarch of Iron Body",
+            "Monarch of Fangs",
+            "The Frost Monarch",
+            "Destruction Monarch",
+            "The Shadow Monarch"
+        ];
+
+        function setCooldown() {
+            const cooldownExpiration = Date.now() + 3600000; // 1 hour in milliseconds
+            localStorage.setItem(cooldownKey, cooldownExpiration);
+        }
+
+        function checkCooldown() {
+            const cooldownExpiration = localStorage.getItem(cooldownKey);
+            if (cooldownExpiration && Date.now() < parseInt(cooldownExpiration)) {
+                const remainingTime = Math.ceil((parseInt(cooldownExpiration) - Date.now()) / 1000);
+                updateCooldownClock(remainingTime);
+                return true;
+            }
+            return false;
+        }
+
+        function updateCooldownClock(remainingTime) {
+            const minutes = Math.floor(remainingTime / 60);
+            const seconds = remainingTime % 60;
+            document.getElementById('cooldown-clock').innerText = `You Can Check Your level Again After: ${minutes}m ${seconds}s`;
+        }
+
+        document.querySelector('#btn').addEventListener('click', function () {
+            if (checkCooldown()) {
+                return;
+            }
+
+            const userName = document.getElementById('name').value;
+
+            // Check if the user entered a name
+            if (!userName) {
+                alert('Please enter Hunter\'s name before calculating.');
+                return;
+            }
+
+            const randomTitle = titleNames[Math.floor(Math.random() * titleNames.length)];
+            const randomJob = jobNames[Math.floor(Math.random() * jobNames.length)];
+            const randomHP = Math.floor(Math.random() * 100001);
+            const randomHealth = Math.floor(Math.random() * 501);
+            const randomMP = Math.floor(Math.random() * 1001);
+            const randomStrength = Math.floor(Math.random() * 1001);
+            const randomAgility = Math.floor(Math.random() * 701);
+            const randomSense = Math.floor(Math.random() * 551);
+            const randomIntelligence = Math.floor(Math.random() * 491);
+            const randomLevel = Math.floor(Math.random() * 201);
+            const randomFatigue = Math.floor(Math.random() * 191);
+            const randomAbilityPoints = Math.floor(Math.random() * 401);
+
+            document.getElementById('job-name').innerText = randomJob;
+            document.getElementById('title-name').innerText = randomTitle;
+            document.getElementById('hp-value').innerText = randomHP;
+            document.getElementById('health-value').innerText = randomHealth;
+            document.getElementById('mp-value').innerText = randomMP;
+            document.getElementById('strength-value').innerText = randomStrength;
+            document.getElementById('agility-value').innerText = randomAgility;
+            document.getElementById('sense-value').innerText = randomSense;
+            document.getElementById('intelligence-value').innerText = randomIntelligence;
+            document.getElementById('level-value').innerText = randomLevel;
+            document.getElementById('fatigue-value').innerText = randomFatigue;
+            document.getElementById('ability-points-value').innerText = randomAbilityPoints;
+
+            setCooldown();
+        });
+    });
+</script>
+
+
+  <style>
+  
+  @import url('https://fonts.googleapis.com/css2?family=Single+Day&display=swap');
+
+  body{
+   
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+   
+  }
+  
+  
+  
+  
+  
+      #name:focus {
+  outline: none;
+  border-color: greenyellow; 
+  box-shadow: 0 0 5px rgba(24, 119, 242, 0.9);
+}
+  </style>
+</head>
+<body>
+
+
+
+
+
+
+<div style="display: flex; justify-content: center; align-items: center;" >
+  <img src="/Leveling-images/2ec75ba8ba23.png" alt="" style="width: 50%; margin-top: 200px;">
+</div>
+
+  
+<h1 style="text-align: center; color: mediumpurple; font-family: 'Single Day', cursive;">Welcome to Level</h1>
+
+<hr>
+
+<p style="color: grey; text-align: center;">Scroll down to check Your Level</p>
+<div style="margin-top: 260px;">
+  
+<div id="scrollTarget" style="margin-top: 20px; margin-bottom: 80px;">
+  <!-- Your content here -->
+
+  <div style="margin-top: -200px; margin-left: 125px">
+<button type="button" onclick="scrollToBottom()" style="width: 62px;
+  height: 62px;
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  color: white;
+  background:  #112e42;
+  border: none;
+  outline: none;
+  border-radius: 100%;" id="scrollTarget"><b>↓</b></button>
+  </div>
+</div>
+
+
+
+  
+  <div class="statice-board">
+    <img src="/leveling-images/Picsart_24-01-24_21-35-49-581.jpg" alt="" style="width: 510px; margin-left: -87px; margin-right: -70px;">
+    
+    <!--
+    
+      <div class="btns" style="margin-bottom: -70px;">
+    <label for="name"></label>
+    <input type="name" id="name" name="name">
+  </div>
+  -->
+  </div>
+  
+    
+    
+<div class="btns" style="margin-bottom: -270px; margin-top: -420px; margin-left: 24px; border: none; outline: none;">
+    <label for="name" style="color: white; line-height: 2;">NAME:</label>
+    <input type="name" id="name" name="name" style="color: white; border: none; background-color: #222b7d; border-radius: 4px; width: 44%;" placeholder="Enter Hunter's name">
+
+
+    
+         <label for="job" style="color: white; line-height: 2; margin-left: 15px;" for="lev">LEVEL: <span id="level-value" style="font-size: 17px;"></span></label>
+
+
+
+               <label for="job" style="color: white; line-height: 2; margin-right: -70px; margin-left: 210px; font-size: 16px;" for="fatigue">FATIGUE: <span id="fatigue-value" style="font-size: 17px;"></span></label>
+
+
+
+
+
+    <br>
+<div style="margin-top: -26px;">
+    <label for="job" style="color: white; line-height: 1;">JOB: <span id="job-name" style="font-size: 17px;"></span></label>
+    <br>
+<label for="title" style="color: white; line-height: 2;">TITLE: <span id="title-name" style="font-size: 17px;"></span></label>
+</div>
+
+
+<label for="hp" style="color: white; line-height: 2;">HP: <span id="hp-value" style="font-size: 17px;"></span></label>
+    <br>
+    <img src="/leveling-images/Picsart_24-01-24_22-31-11-921.jpg" alt="" style="width: 50%; margin-bottom: 10px; Border-radius: 3px;">
+<br>
+    <label for="mp" style="color: white; line-height: 2;">MP: <span id="mp-value" style="font-size: 17px;"></span></label>
+    
+    <br>
+    <img src="/leveling-images/Picsart_24-01-24_22-31-11-921.jpg" alt="" style="width: 40%; margin-bottom: 20px; Border-radius: 3px;">
+    
+    
+    
+                
+    
+    
+    
+    
+    <img src="/leveling-images/Picsart_24-01-24_22-57-43-703.png" alt="" style="width: 94%; margin-bottom: 70px; margin-top: -17px;">
+    <br>
+    <div style="margin-top: 45px;">
+      
+    
+<h2 style="color: white; font-weight: 400; font-size: 15px; margin-top: -40px; margin-left: 10px; text-shadow: 2px 2px 4px black, -2px -2px 9px black, 0 0 4px black;" for="sense">SENSE: <span id="sense-value" style="font-size: 17px;"></span></h2>
+      
+
+<h2 style="color: white; font-weight: 400; font-size: 15px; margin-top: -60px; margin-left: 10px; 
+margin-bottom: 0; text-shadow: 2px 2px 4px black, -2px -2px 9px black, 0 0 4px black;" for="agility">AGILITY: <span id="agility-value" style="font-size: 17px;"></span></h2>
+
+
+<h2 style="color: white; font-weight: 400; font-size: 15px; margin-top: -46px; margin-left: 5px; margin-bottom: 0; text-shadow: 2px 2px 4px black, -2px -2px 9px black, 0 0 4px black;" for="strength">STRENGTH: <span id="strength-value" style="font-size: 17px;"></span></h2>
+
+
+
+
+
+<img src="/leveling-images/Picsart_24-01-24_23-30-09-885.jpg" alt="" style="width: 8%; margin-top: -28px; margin-left: 120px; Border-radius: 5px;">
+</div>
+
+
+
+  </div>
+</div>
+  
+  
+  <div>
+    <h2 style="color: white; font-weight: 400; font-size: 15px; margin-top: -46px; margin-left: 180px; margin-bottom: -240; margin-top: 175px; text-shadow: 2px 2px 4px black, -2px -2px 9px black, 0 0 4px black;" for="health">HEALTH: <span id="health-value" style="font-size: 17px;"></span></h2>
+  </div>
+  
+  <div>
+    <h2 style="color: white; font-weight: 400; font-size: 13px; margin-top: -55px; margin-left: 173px; margin-bottom: -0; margin-top: 0px; text-shadow: 2px 2px 4px black, -2px -2px 9px black, 0 0 4px black;" for="intelligence">INTELLIGENCE: <span id="intelligence-value" style="font-size: 17px;"></span></h2>
+  </div>
+  
+  <div>
+    <img src="/leveling-images/Picsart_24-01-25_17-02-38-208.jpg" alt="" style="width: 8%; margin-left: 297px; Border-radius: 5px; margin-top: -57px;">
+  </div>
+   
+   <br>
+   <div>
+         <img src="/leveling-images/Picsart_24-01-24_22-57-43-703.png" alt="" style="width: 90%; margin-bottom: 70px; margin-top: -10px; margin-left: 20px;">
+   </div>
+   
+   
+   
+<div>
+  <h2 style="color: white; font-size: 15px; margin-top: -55px; text-align: right; margin-right: 35px; font-weight: 400; text-shadow: 2px 2px 4px black, -2px -2px 9px black, 0 0 4px black;" for="ability-point">AVAILABLE ABILITY POINTS: <span id="ability-points-value" style="font-size: 17px;"></span></h2>
+</div>
+
+
+
+
+
+<div style="margin-top: 30px;">
+    <div style="display: flex; justify-content: center; align-items: center; height: 10vh; margin-top: 17px;">
+        <button style="background-color: #131e85; color: #fff; padding: 10px 15px; border: none; border-radius: 3px; font-size: 16px; cursor: pointer; padding-left: 80px; padding-right: 70px; box-shadow: 0 4px 6px rgba(5, 4, 4, 0.3);" id="btn">
+            <b>CALCULATE YOUR LEVEL</b>
+        </button>
+    </div>
+</div>
+</div>
+</div>
+
+<br><br>
+
+<!-- Add this HTML element to display the countdown clock -->
+<div id="cooldown-clock" style="color: black; text-align: center; font-size: 14px; margin-top: -35px; background-color: white; Border-radius: 4px; padding-top: 0px; padding-bottom: 0px; font-weight: 300;"></div>
+
+
+<script>
+  function scrollToBottom() {
+    document.body.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
+}
+</script>
+</body>
+</html>
